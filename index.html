@@ -140,29 +140,71 @@
               <button class="accordion">Street Foto</button>
               <div class="panel">
                 <br>
-                  <div class = "insta-grid grid">
-                      <div class="gmbr">
-                        <img src="images/stret 1.jpeg" alt="Gambar 1">
-                        <!-- Tambahkan gambar-gambar lainnya di sini -->
-                      </div>
-                      <div class="gmbr">
-                        <img src="images/stret 2.png" alt="Gambar 1">
-                        <!-- Tambahkan gambar-gambar lainnya di sini -->
-                      </div>
-                      <div class="gmbr">
-                        <img src="images/stret 3.jpeg" alt="Gambar 1">
-                        <!-- Tambahkan gambar-gambar lainnya di sini -->
-                      </div>
-                      <div class="gmbr">
-                        <img src="images/stret 4.png" alt="Gambar 1">
-                        <!-- Tambahkan gambar-gambar lainnya di sini -->
-                      </div>
-                      <div class="gmbr">
-                        <img src="images/stret 5.jpeg" alt="Gambar 1">
-                        <!-- Tambahkan gambar-gambar lainnya di sini -->
-                      </div>
+                <div class="row">
+                  <div class="col">
+                   <img src="https://static.pexels.com/photos/385997/pexels-photo-385997.jpeg" onclick="openLightbox();toSlide(1)" class="hover-shadow preview">
                   </div>
+                  <div class="col">
+                   <img src="https://static.pexels.com/photos/574521/pexels-photo-574521.jpeg" onclick="openLightbox();toSlide(2)" class="hover-shadow preview">
+                  </div>
+                  <div class="col">
+                   <img src="https://static.pexels.com/photos/386009/pexels-photo-386009.jpeg" onclick="openLightbox();toSlide(3)" class="hover-shadow preview">
+                  </div>
+                  <div class="col">
+                    <img src="https://static.pexels.com/photos/385997/pexels-photo-385997.jpeg" onclick="openLightbox();toSlide(1)" class="hover-shadow preview">
+                   </div>
+                   <div class="col">
+                    <img src="https://static.pexels.com/photos/574521/pexels-photo-574521.jpeg" onclick="openLightbox();toSlide(2)" class="hover-shadow preview">
+                   </div>
+                   <div class="col">
+                    <img src="https://static.pexels.com/photos/386009/pexels-photo-386009.jpeg" onclick="openLightbox();toSlide(3)" class="hover-shadow preview">
+                   </div>
+                   <div class="col">
+                    <img src="https://static.pexels.com/photos/574521/pexels-photo-574521.jpeg" onclick="openLightbox();toSlide(2)" class="hover-shadow preview">
+                   </div>
+                   <div class="col">
+                    <img src="https://static.pexels.com/photos/386009/pexels-photo-386009.jpeg" onclick="openLightbox();toSlide(3)" class="hover-shadow preview">
+                   </div>
+                   <div class="col">
+                    <img src="https://static.pexels.com/photos/574521/pexels-photo-574521.jpeg" onclick="openLightbox();toSlide(2)" class="hover-shadow preview">
+                   </div>
+                   <div class="col">
+                    <img src="https://static.pexels.com/photos/386009/pexels-photo-386009.jpeg" onclick="openLightbox();toSlide(3)" class="hover-shadow preview">
+                   </div>
+                 </div>
+                 
+                 <div id="Lightbox" class="modal">
+                 
+                  <span class="close pointer" onclick="closeLightbox()">&times;</span>
+                  <div class="modal-content">
+                   <div class="slide">
+                    <img src="https://static.pexels.com/photos/385997/pexels-photo-385997.jpeg" class="image-slide" alt="Toy car on the road." />
+                   </div>
+                   <div class="slide">
+                    <img src="https://static.pexels.com/photos/574521/pexels-photo-574521.jpeg" class="image-slide" alt="Toy car exploring offroad." />
+                   </div>
+                   <div class="slide">
+                    <img src="https://static.pexels.com/photos/386009/pexels-photo-386009.jpeg" class="image-slide" alt="Toy car in the city." />
+                   </div>
+                   <div class="slide">
+                    <img src="https://static.pexels.com/photos/385997/pexels-photo-385997.jpeg" class="image-slide" alt="Toy car on the road." />
+                   </div>
+                   <div class="slide">
+                    <img src="https://static.pexels.com/photos/574521/pexels-photo-574521.jpeg" class="image-slide" alt="Toy car exploring offroad." />
+                   </div>
+                   <div class="slide">
+                    <img src="https://static.pexels.com/photos/386009/pexels-photo-386009.jpeg" class="image-slide" alt="Toy car in the city." />
+                   </div>
+                 
+                   <a class="previous" onclick="changeSlide(-1)">&#10094;</a>
+                   <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                 
+                   
+                   </div>
+                  </div>
+                 </div>
               </div>
+              <br>
               <hr style="width: 100%; color: black; border: bolder;">
               <br>
 
@@ -579,20 +621,49 @@ for (i = 0; i < acc.length; i++) {
  </script>
 
 <script>
- window.addEventListener('scroll', function() {
-    var images = document.querySelectorAll('.gmbr img');
-    var windowHeight = window.innerHeight;
-    
-    images.forEach(function(img) {
-        var imgTop = img.getBoundingClientRect().top;
-        if (imgTop < windowHeight * 0.50) {
-            img.style.display = 'block';
-        } else {
-            img.style.display = 'none';
-        }
-    });
-});
+  
+var slideIndex = 1;
+showSlide(slideIndex);
 
+function openLightbox() {
+  document.getElementById('Lightbox').style.display = 'block';
+}
+
+function closeLightbox() {
+  document.getElementById('Lightbox').style.display = 'none';
+}
+
+function changeSlide(n) {
+	showSlide(slideIndex += n);
+}
+
+function toSlide(n) {
+	showSlide(slideIndex = n);
+}
+
+function showSlide(n) {
+
+  const slides = document.getElementsByClassName('slide');
+  let modalPreviews = document.getElementsByClassName('modal-preview');
+
+  if (n > slides.length) {
+    slideIndex = 1;	
+  }
+  
+  if (n < 1) {
+  	slideIndex = slides.length;
+  }
+
+  for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (let i = 0; i < modalPreviews.length; i++) {
+      modalPreviews[i].className = modalPreviews[i].className.replace(' active', '');
+  }
+  
+  slides[slideIndex - 1].style.display = 'block';
+  modalPreviews[slideIndex - 1].className += ' active';
+}
 </script>
 
 
