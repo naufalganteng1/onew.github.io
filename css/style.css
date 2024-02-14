@@ -509,7 +509,9 @@ h1, h2, h3{
   }
   
   .active:after {
-    content: '^'; /* Unicode character for "minus" sign (-) */
+    content: '⩓'; /* Unicode character for "minus" sign (-) */
+    font-size: 20px;
+    color: black;
   }
 
 #insta{
